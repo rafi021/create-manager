@@ -1,5 +1,6 @@
 <?php
 
+use App\Parser\Parser;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return Parser::parse('../public/data/posts.json');
+
+    // return Parser::driver('csv')->parse('../public/data/survey-2021.csv');
+
+    return Parser::driver('xml')->parse('../public/data/books.xml');
 });

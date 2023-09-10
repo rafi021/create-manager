@@ -1,5 +1,6 @@
 <?php
 
+use App\Parser\ParserServiceProvider;
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
@@ -70,7 +71,13 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Dhaka',
+
+
+    /*
+    Parse Manager Config
+    */
+    'parser.default' => 'json',
 
     /*
     |--------------------------------------------------------------------------
@@ -168,6 +175,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        ParserServiceProvider::class
     ])->toArray(),
 
     /*
