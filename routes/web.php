@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\User;
 use App\Parser\Parser;
+use App\Services\Exporter\CsvExporter;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +21,13 @@ Route::get('/', function () {
 
     // return Parser::driver('csv')->parse('../public/data/survey-2021.csv');
 
-    return Parser::driver('xml')->parse('../public/data/books.xml');
+    // return Parser::driver('xml')->parse('../public/data/books.xml');
+
+
+    $users = User::all()->toArray();
+
+    CsvExporter::from($users)
+        ->columns(['email', 'name'])
+        ->noHeaders()
+        ->download();
 });
